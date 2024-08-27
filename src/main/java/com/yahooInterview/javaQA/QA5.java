@@ -1,4 +1,4 @@
-package com.yahooInterview.QA;
+package com.yahooInterview.javaQA;
 
 public class QA5 {
 //	棧與堆的對比

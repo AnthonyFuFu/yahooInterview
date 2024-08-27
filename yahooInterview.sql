@@ -40,20 +40,6 @@ create table `order`(
 insert into `order`(MEM_ID, ORD_SUBTOTAL, ORD_TOTAL, ORD_RECIPIENT, ORD_RECIPIENT_PHONE, ORD_PAYMENT, ORD_DELIVERY ,ORD_ADDRESS)
 values (1, 270, 270, 'leoblue', '0987654321', 1, 1, '桃園');
 
--- 訂單明細 --
-create table order_detail(
-	ORD_ID int not null,
-    PD_ID int not null,
-    ORDD_NUMBER int not null,
-    ORDD_PRICE int not null,
-    ORDD_DISCOUNT_PRICE int not null,
-    constraint order_detail_order_fk foreign key (ORD_ID) references `order`(ORD_ID),
-    constraint order_detail_product_fk foreign key (PD_ID) references product(PD_ID),
-	primary key(ORD_ID, PD_ID)
-);
-insert into order_detail(ORD_ID, PD_ID, ORDD_NUMBER, ORDD_PRICE, ORDD_DISCOUNT_PRICE)
-values (1, 1, 3, 300, 270);
-
 -- 商品 --
 create table product(
 	PD_ID int auto_increment not null primary key,
@@ -70,3 +56,17 @@ create table product(
 insert into product(PD_NAME, PD_PRICE, PD_DESCRIPTION, PD_STATUS, PD_IS_DEL, PD_CREATE_BY,PD_CREATE_TIME,PD_UPDATE_BY,PD_UPDATE_TIME)
 values ('奶茶風味可麗露', 300, '奶茶風味可麗露最好吃', 1, 0,'嘉',NOW(),'嘉',NOW()),
        ('抹茶風味可麗露', 500, '抹茶風味可麗露最好吃', 1, 0,'嘉',NOW(),'嘉',NOW());
+
+-- 訂單明細 --
+create table order_detail(
+	ORD_ID int not null,
+    PD_ID int not null,
+    ORDD_NUMBER int not null,
+    ORDD_PRICE int not null,
+    ORDD_DISCOUNT_PRICE int not null,
+    constraint order_detail_order_fk foreign key (ORD_ID) references `order`(ORD_ID),
+    constraint order_detail_product_fk foreign key (PD_ID) references product(PD_ID),
+	primary key(ORD_ID, PD_ID)
+);
+insert into order_detail(ORD_ID, PD_ID, ORDD_NUMBER, ORDD_PRICE, ORDD_DISCOUNT_PRICE)
+values (1, 1, 3, 300, 270);

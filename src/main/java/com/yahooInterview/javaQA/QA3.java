@@ -1,4 +1,4 @@
-package com.yahooInterview.QA;
+package com.yahooInterview.javaQA;
 
 public class QA3 {
 	
